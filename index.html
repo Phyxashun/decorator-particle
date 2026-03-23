@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Particle System — QuadTree + @Decorator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- ── NAVBAR ── -->
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <div class="navbar-item">
+          <span>Particle System&nbsp;<strong>/ QuadTree</strong></span>
+          <div class="tags" style="margin: 0 0 0 10px">
+            <span class="tag is-qt">QuadTree</span>
+            <span class="tag is-dec ml-1">@Decorator</span>
+          </div>
+        </div>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div id="stats-bar" style="display: flex; gap: 18px">
+              <span class="stat-tag">particles <b id="st-count">0</b></span>
+              <span class="stat-tag">fps <b id="st-fps">0</b></span>
+              <span class="stat-tag">qt nodes <b id="st-qt">0</b></span>
+              <span class="stat-tag">avg neighbors <b id="st-nb">0</b></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ── APP BODY ── -->
+    <div class="app-body">
+      <!-- LEFT PANEL -->
+      <aside class="left-panel">
+        <p class="menu-label">Visual / Lifecycle</p>
+
+        <button class="mode-btn is-active" data-mode="spark">
+          SparkParticle
+          <span class="mode-sub">@WithGravity · @WithTrail · @WithShrink</span>
+        </button>
+        <button class="mode-btn" data-mode="bubble">
+          BubbleParticle
+          <span class="mode-sub">@WithGlow · @WithFade · @WithLifetime</span>
+        </button>
+        <button class="mode-btn" data-mode="confetti">
+          ConfettiParticle
+          <span class="mode-sub">@WithRotation · @WithGravity</span>
+        </button>
+        <button class="mode-btn" data-mode="snow">
+          SnowParticle
+          <span class="mode-sub">@WithDrag · @WithGravity</span>
+        </button>
+        <button class="mode-btn" data-mode="bouncer">
+          BouncerParticle
+          <span class="mode-sub">@WithBounce · @WithRotation</span>
+        </button>
+
+        <p class="menu-label" style="margin-top: 10px">Spatial / QuadTree</p>
+
+        <button class="mode-btn" data-mode="flock">
+          FlockParticle
+          <span class="mode-sub">@WithFlocking · @WithWrap</span>
+        </button>
+        <button class="mode-btn" data-mode="constellation">
+          ConstellationParticle
+          <span class="mode-sub">@WithAttraction · @WithLinkDraw</span>
+        </button>
+        <button class="mode-btn" data-mode="repulsor">
+          RepulsorParticle
+          <span class="mode-sub">@WithRepulsion · @WithDrag</span>
+        </button>
+        <button class="mode-btn" data-mode="orbital">
+          OrbitalParticle
+          <span class="mode-sub">@WithRepulsion + @WithAttraction</span>
+        </button>
+
+        <p class="menu-label" style="margin-top: 12px">Display</p>
+        <div class="toggle-row" id="tog-qt">
+          <span class="toggle-label">Show QuadTree</span>
+          <div class="toggle-pip"></div>
+        </div>
+        <div class="toggle-row" id="tog-radius">
+          <span class="toggle-label">Show Radius</span>
+          <div class="toggle-pip"></div>
+        </div>
+        <div class="toggle-row is-on" id="tog-links">
+          <span class="toggle-label">Trail / Links</span>
+          <div class="toggle-pip"></div>
+        </div>
+
+        <p class="menu-label" style="margin-top: 12px">Spawn</p>
+        <div class="slider-block">
+          <div class="slider-label">Count per click <span id="lbl-count">12</span></div>
+          <input type="range" id="sl-count" min="1" max="40" value="12" />
+        </div>
+        <div class="slider-block">
+          <div class="slider-label">Spawn speed <span id="lbl-speed">1.0×</span></div>
+          <input type="range" id="sl-speed" min="0.1" max="3" step="0.1" value="1" />
+        </div>
+
+        <p class="menu-label" style="margin-top: 12px">Canvas</p>
+        <button class="mode-btn" id="clearBtn">Clear</button>
+        <button class="mode-btn" id="fillBtn">Fill (200)</button>
+      </aside>
+
+      <!-- CANVAS -->
+      <div class="canvas-wrap">
+        <canvas id="c"></canvas>
+        <div class="canvas-hint">click or drag to spawn · <span id="mode-hint">FlockParticle</span></div>
+      </div>
+
+      <!-- RIGHT PANEL -->
+      <div class="right-panel">
+        <p class="panel-section-label">QuadTree Live View</p>
+        <div class="qt-box">
+          <canvas id="qt-canvas"></canvas>
+        </div>
+
+        <p class="panel-section-label">Decorator Stack</p>
+        <div id="dec-stack" class="dec-stack"></div>
+
+        <hr class="panel-divider" />
+        <div id="perf-note" class="perf-box"></div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
