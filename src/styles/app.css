@@ -1,0 +1,362 @@
+/* ── Fonts & Bulma ── */
+@import 'bulma/css/bulma.min.css';
+
+/* ── Design tokens ── */
+:root {
+  /* --bg: #03050d; */
+  --bg: #070711;
+  --surface: #070b18;
+  --border: #111828;
+  --text: #9aadcc;
+  --dim: #2e3f5a;
+  --bright: #cdd8ee;
+  --accent: #38c8a8;
+  --accent2: #ff7b9c;
+  --blue: #5b9cf6;
+  --yellow: #f0c85a;
+}
+
+html,
+body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Mono', monospace;
+  overflow: hidden;
+}
+
+/* ── Navbar ── */
+.navbar {
+  background: var(--surface) !important;
+  border-bottom: 1px solid var(--border);
+  min-height: 48px;
+  font-family: 'DM Mono', monospace;
+}
+.navbar-item,
+.navbar-link {
+  color: var(--text) !important;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+.navbar-item strong {
+  color: var(--accent);
+}
+.navbar-menu {
+  background: var(--surface) !important;
+}
+
+/* Stat tags */
+.stat-tag {
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  background: transparent;
+  color: var(--dim);
+  font-family: 'DM Mono', monospace;
+  display: inline-block;
+  min-width: 5ch;
+  text-align: right;
+}
+.stat-tag b {
+  display: inline-block;
+  min-width: 5ch;
+  text-align: right;
+  color: var(--accent);
+}
+.stat-tag:nth-child(2) b {
+  display: inline-block;
+  min-width: 5ch;
+  text-align: right;
+  color: var(--accent2);
+}
+.stat-tag:nth-child(3) b {
+  display: inline-block;
+  min-width: 5ch;
+  text-align: right;
+  color: var(--yellow);
+}
+.stat-tag:nth-child(4) b {
+  display: inline-block;
+  min-width: 5ch;
+  text-align: left;
+  color: var(--blue);
+}
+
+#st-count,
+#st-qt {
+  display: inline-block;
+  min-width: 5ch;
+  text-align: right;
+}
+
+/* Bulma tag variants */
+.tag.is-qt {
+  background: rgba(56, 200, 168, 0.1);
+  color: var(--accent);
+  border: 1px solid rgba(56, 200, 168, 0.3);
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+.tag.is-dec {
+  background: rgba(91, 156, 246, 0.1);
+  color: var(--blue);
+  border: 1px solid rgba(91, 156, 246, 0.3);
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+/* ── App layout ── */
+.app-body {
+  display: flex;
+  height: calc(100vh - 48px);
+  margin-top: 48px;
+  overflow: hidden;
+}
+
+/* ── Left panel ── */
+.left-panel {
+  width: 195px;
+  min-width: 195px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 12px 10px;
+  gap: 3px;
+}
+
+.menu-label {
+  color: var(--dim) !important;
+  font-size: 8.5px !important;
+  letter-spacing: 0.15em !important;
+  font-family: 'DM Mono', monospace;
+  margin: 8px 0 4px 4px !important;
+}
+
+/* Mode buttons */
+.mode-btn {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--dim);
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  padding: 8px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.12s;
+  margin-bottom: 2px;
+  display: block;
+  line-height: 1.3;
+}
+.mode-btn:hover {
+  border-color: #1a2540;
+  color: var(--text);
+  background: transparent;
+}
+.mode-btn.is-active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(56, 200, 168, 0.06);
+}
+.mode-btn .mode-sub {
+  display: block;
+  font-size: 8.5px;
+  opacity: 0.5;
+  margin-top: 3px;
+  letter-spacing: 0.04em;
+}
+
+/* Toggle rows */
+.toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: 3px;
+  transition: 0.12s;
+}
+.toggle-row:hover {
+  border-color: #1a2540;
+}
+.toggle-label {
+  font-size: 10px;
+  color: var(--text);
+  font-family: 'DM Mono', monospace;
+}
+.toggle-pip {
+  width: 28px;
+  height: 15px;
+  background: var(--border);
+  border-radius: 8px;
+  position: relative;
+  transition: 0.2s;
+  flex-shrink: 0;
+}
+.toggle-pip::after {
+  content: '';
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  background: var(--dim);
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: 0.2s;
+}
+.toggle-row.is-on .toggle-pip {
+  background: rgba(56, 200, 168, 0.3);
+}
+.toggle-row.is-on .toggle-pip::after {
+  background: var(--accent);
+  left: 15px;
+}
+
+/* Sliders */
+.slider-block {
+  padding: 6px 10px 4px;
+  margin-bottom: 2px;
+}
+.slider-block .slider-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  color: var(--dim);
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+  font-family: 'DM Mono', monospace;
+}
+.slider-block .slider-label span {
+  color: var(--text);
+}
+.slider-block input[type='range'] {
+  width: 100%;
+  accent-color: var(--accent);
+  cursor: pointer;
+  height: 3px;
+}
+
+/* ── Canvas ── */
+.canvas-wrap {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg); /* #070711 */
+}
+
+#c {
+  background: #070711;
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+}
+
+.canvas-hint {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9.5px;
+  color: var(--dim);
+  letter-spacing: 0.08em;
+  pointer-events: none;
+  white-space: nowrap;
+  font-family: 'DM Mono', monospace;
+}
+
+/* ── Right panel ── */
+.right-panel {
+  width: 205px;
+  min-width: 205px;
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  padding: 14px 12px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-section-label {
+  font-size: 8.5px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 8px;
+  font-family: 'DM Mono', monospace;
+}
+
+/* QuadTree minimap */
+.qt-box {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg);
+  margin-bottom: 14px;
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+#qt-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Decorator stack */
+.dec-stack {
+  display: flex;
+  flex-direction: column;
+  font-size: 10px;
+  line-height: 1.75;
+  font-family: 'DM Mono', monospace;
+  flex: 1;
+}
+.dec-at {
+  color: var(--dim);
+}
+.dec-name {
+  color: var(--yellow);
+}
+.dec-paren {
+  color: var(--dim);
+}
+.dec-args {
+  color: var(--accent);
+}
+.dec-class {
+  color: var(--bright);
+  margin-top: 2px;
+}
+.dec-kw {
+  color: var(--accent2);
+}
+.dec-ext {
+  color: var(--dim);
+}
+
+.panel-divider {
+  background: var(--border);
+  height: 1px;
+  border: none;
+  margin: 10px 0;
+}
+.perf-box {
+  padding: 8px 10px;
+  background: rgba(56, 200, 168, 0.04);
+  border: 1px solid rgba(56, 200, 168, 0.12);
+  border-radius: 4px;
+  font-size: 9px;
+  color: var(--dim);
+  line-height: 1.6;
+  letter-spacing: 0.03em;
+  font-family: 'DM Mono', monospace;
+}
+.perf-box b {
+  color: var(--accent);
+}

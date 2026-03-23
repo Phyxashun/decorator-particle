@@ -1,6 +1,6 @@
 # Particle System — QuadTree + @Decorator
 
-An interactive particle simulation built in TypeScript that demonstrates two complementary design patterns working together:
+git p:
 
 - **@Decorator pattern** — particle characteristics (color, size, lifetime, gravity, flocking, etc.) are composed onto a base class at definition time rather than wrapped around instances at runtime. This bakes behavior into the prototype chain and produces measurably faster dispatch than the GoF wrapper equivalent.
 - **QuadTree spatial indexing** — a region QuadTree is rebuilt each frame and passed into every particle's `update()` call, turning O(n²) neighbor searches (required by flocking, repulsion, attraction, and link-drawing) into O(n log n).
@@ -9,12 +9,12 @@ An interactive particle simulation built in TypeScript that demonstrates two com
 
 ## Features
 
-| Mode | Decorators | Behavior |
-|---|---|---|
-| **FlockParticle** | `@WithFlocking` `@WithWrap` `@WithSpeedLimit` | Reynolds boids — separation, alignment, cohesion |
-| **ConstellationParticle** | `@WithAttraction` `@WithLinkDraw` `@WithDrag` | Drifting nodes connected by proximity lines |
-| **RepulsorParticle** | `@WithRepulsion` `@WithDrag` `@WithBounce` | Mutual repulsion → crystalline equilibrium |
-| **OrbitalParticle** | `@WithRepulsion` `@WithAttraction` `@WithTrail` | Balanced forces → natural orbit distance |
+| Mode                      | Decorators                                      | Behavior                                         |
+| ------------------------- | ----------------------------------------------- | ------------------------------------------------ |
+| **FlockParticle**         | `@WithFlocking` `@WithWrap` `@WithSpeedLimit`   | Reynolds boids — separation, alignment, cohesion |
+| **ConstellationParticle** | `@WithAttraction` `@WithLinkDraw` `@WithDrag`   | Drifting nodes connected by proximity lines      |
+| **RepulsorParticle**      | `@WithRepulsion` `@WithDrag` `@WithBounce`      | Mutual repulsion → crystalline equilibrium       |
+| **OrbitalParticle**       | `@WithRepulsion` `@WithAttraction` `@WithTrail` | Balanced forces → natural orbit distance         |
 
 A live QuadTree minimap in the right panel shows the tree subdividing in real time as particle density changes.
 
@@ -22,12 +22,12 @@ A live QuadTree minimap in the right panel shows the tree subdividing in real ti
 
 ## Tech stack
 
-| Tool | Role |
-|---|---|
-| [Bun](https://bun.sh) | Package manager + runtime |
-| [Vite](https://vitejs.dev) | Dev server + bundler |
+| Tool                                         | Role                                      |
+| -------------------------------------------- | ----------------------------------------- |
+| [Bun](https://bun.sh)                        | Package manager + runtime                 |
+| [Vite](https://vitejs.dev)                   | Dev server + bundler                      |
 | [TypeScript](https://www.typescriptlang.org) | Language (`experimentalDecorators: true`) |
-| [Bulma](https://bulma.io) | CSS framework (dark-themed) |
+| [Bulma](https://bulma.io)                    | CSS framework (dark-themed)               |
 
 ---
 

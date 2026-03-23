@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html class="theme-dark" lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,11 +7,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
   </head>
+
   <body>
     <!-- ── NAVBAR ── -->
     <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <div class="navbar-item">
+          <a class="navbar-item" href="index.html">
+            <i class="fas fa-home"></i>
+            <img src="favicon.png" />
+          </a>
           <span>Particle System&nbsp;<strong>/ QuadTree</strong></span>
           <div class="tags" style="margin: 0 0 0 10px">
             <span class="tag is-qt">QuadTree</span>
@@ -19,18 +24,20 @@
           </div>
         </div>
       </div>
+
       <div class="navbar-menu">
         <div class="navbar-end">
           <div class="navbar-item">
-            <div id="stats-bar" style="display: flex; gap: 18px">
-              <span class="stat-tag">particles <b id="st-count">0</b></span>
-              <span class="stat-tag">fps <b id="st-fps">0</b></span>
-              <span class="stat-tag">qt nodes <b id="st-qt">0</b></span>
-              <span class="stat-tag">avg neighbors <b id="st-nb">0</b></span>
+            <div id="stats-bar navbar-item" style="display: flex; gap: 18px">
+              <span class="stat-tag navbar-item">particles <b id="st-count">0</b></span>
+              <span class="stat-tag navbar-item">fps <b id="st-fps">0</b></span>
+              <span class="stat-tag navbar-item">qt nodes <b id="st-qt">0</b></span>
+              <span class="stat-tag navbar-item">avg neighbors <b id="st-nb">0</b></span>
             </div>
           </div>
         </div>
       </div>
+      <hr class="navbar-divider" />
     </nav>
 
     <!-- ── APP BODY ── -->
